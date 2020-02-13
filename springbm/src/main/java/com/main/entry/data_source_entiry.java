@@ -1,14 +1,23 @@
 package com.main.entry;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @PropertySource(value = {"classpath:config/application.properties"})
 @Component
 @ConfigurationProperties(prefix = "spring.datasource")
+@Configuration
 public class data_source_entiry {
     
     
@@ -259,6 +268,19 @@ public class data_source_entiry {
         this.typeAliasesPackag = typeAliasesPackag;
     }
     
-    
+    @Bean
+    @Primary
+    public DataSource setDataSource(){
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl(url);
+        config.setUsername(username);
+        config.setPassword(password);
+        config.setDriverClassName(driverClassName);
+        config.addDataSourceProperty("cachePrepStmts", "true");
+        config.addDataSourceProperty("prepStmtCacheSize", "250");
+        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        HikariDataSource ds = new HikariDataSource(config);
+        return ds;
+    }
     
 }

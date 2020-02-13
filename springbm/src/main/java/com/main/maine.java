@@ -1,5 +1,6 @@
 package com.main;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +10,7 @@ import com.main.entry.data_source_entiry;
 
 @SpringBootApplication
 @EnableAutoConfiguration
+@MapperScan("com.main.dao")
 public class maine {
 
     public static void main(String[] args) {
