@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.main.dao.insertHotaleDaoService">
+ 
+    
+    <insert id="insertUser" parameterType="com.main.entry.hrUserPojo">
+      <!-- 获取主键 -->      
+      <selectKey resultType="int" order="BEFORE" keyProperty="id">
+            select employee_informations_s.nextval from dual
+      </selectKey>
+      
+        INSERT INTO ZZY_USER (id,state,nickname) values (#{id},#{state},#{nickname})
+    </insert>
+ 
+</mapper>

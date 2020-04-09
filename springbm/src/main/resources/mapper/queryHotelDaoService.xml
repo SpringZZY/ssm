@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.main.dao.queryHotelDaoService">
+ 
+    <resultMap id="BaseResultMap" type="com.main.entry.User">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    </resultMap>
+ 
+    <select id="queryHotelPublic" resultType="com.main.entry.hrUserPojo">
+        select * from zzy_user 
+    </select>
+ 
+</mapper>
